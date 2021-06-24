@@ -3,10 +3,9 @@ from django.db import models
 
 """Типы инфоблоков"""
 class b_iblock_type(models.Model):
-    """ID"""
+    """ ID """
     id_name = models.CharField(blank=False, max_length=255, verbose_name="ID")
     """ Флаг (Y/N). Разделяются ли элементы блока этого типа по разделам. Обязателен. По умолчанию - "Y"."""
-    #sections = models.CharField(blank=False, default="Y", max_length=1)
     sections = models.BooleanField(default=True, verbose_name="Содержит разделы")
     """Порядок сортировки типа"""
     sort = models.IntegerField(blank=False, default=500, verbose_name="Сортировка")
