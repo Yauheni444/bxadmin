@@ -3,19 +3,23 @@ from django.db import models
 
 """Типы инфоблоков"""
 class b_iblock_type(models.Model):
+    """ID"""
+    id_name = models.CharField(blank=False, max_length=255, verbose_name="ID")
     """ Флаг (Y/N). Разделяются ли элементы блока этого типа по разделам. Обязателен. По умолчанию - "Y"."""
     #sections = models.CharField(blank=False, default="Y", max_length=1)
-    sections = models.BooleanField(default=True)
+    sections = models.BooleanField(default=True, verbose_name="Содержит разделы")
     """Порядок сортировки типа"""
-    sort = models.IntegerField(blank=False, default=500)
+    sort = models.IntegerField(blank=False, default=500, verbose_name="Сортировка")
     """Название типа информационных блоков."""
-    name = models.CharField(blank=False, max_length=255)
+    name = models.CharField(blank=False, max_length=255, verbose_name="Название")
 
     def __str__(self):
         return self.name
 
     class Meta:
         verbose_name = 'Типы инфоблоков'
+        verbose_name_plural = 'Типы инфоблоков'
+        ordering = ['sort'] #сортировка
 
 
 """Инфоблоки"""
@@ -190,9 +194,9 @@ class b_iblock_property(models.Model):
     """Значение свойства по умолчанию (кроме свойства типа список L)."""
     default_value = models.CharField(blank=True, max_length=255)
     """Количество строк в ячейке ввода значения свойства."""
-    row_count = models.IntegerField(blank=False, default=1, max_length=1)
+    row_count = models.IntegerField(blank=False, default=1)
     """Количество столбцов в ячейке ввода значения свойства."""
-    col_count = models.IntegerField(blank=False, default=1, max_length=1)
+    col_count = models.IntegerField(blank=False, default=1 )
     """Тип для свойства список (L). Может быть "L" - выпадающий список или "C" - флажки."""
     list_type = models.CharField(blank=False, default="L", max_length=1)
     """Количество строк в выпадающем списке для свойств типа "список"."""

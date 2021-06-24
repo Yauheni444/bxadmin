@@ -1,7 +1,15 @@
 from django.contrib import admin
 from .models import *
 
-admin.site.register(b_iblock_type)
+
+class b_iblock_typeAdmin(admin.ModelAdmin):
+    list_display = ('id_name', 'sections', 'sort') #список выводимых полей в таблице
+    #list_display_links = ('id') #ссылки
+    #search_fields = ('sort') # по каким полям можем проводить поиск
+
+
+
+admin.site.register(b_iblock_type, b_iblock_typeAdmin)
 admin.site.register(b_iblock)
 admin.site.register(b_iblock_element)
 admin.site.register(b_iblock_section)
