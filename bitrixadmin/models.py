@@ -14,6 +14,9 @@ class b_iblock_type(models.Model):
     def __str__(self):
         return self.name
 
+    class Meta:
+        verbose_name = 'Типы инфоблоков'
+
 
 """Инфоблоки"""
 class b_iblock(models.Model):
